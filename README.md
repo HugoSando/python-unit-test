@@ -1,1 +1,1 @@
-sample code to check github actions and pytest
+sample code to check github actions and pytest.
