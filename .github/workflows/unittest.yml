@@ -26,5 +26,3 @@ jobs:
             test-results/**/*.xml
             test-results/**/*.trx
             test-results/**/*.json
-        # env:
-        #   GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
