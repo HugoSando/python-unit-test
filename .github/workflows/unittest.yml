@@ -14,9 +14,3 @@ jobs:
       - run: pytest tests/test_my_functions.py
       - name: Publish Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2.16.1
-        if: always()
-        with:
-          files: |
-            test-results/**/*.xml
-            test-results/**/*.trx
-            test-results/**/*.json
