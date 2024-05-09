@@ -15,6 +15,3 @@ def OddEven(number):
         return "Even"
     else:
         return "Odd"
-
-
-

@@ -1,6 +1,11 @@
 name: unit-tests
 on:
   pull_request: {}
+permissions:
+  contents: read
+  issues: read
+  checks: write
+  pull-requests: write
 jobs:
   unit-test:
     runs-on: ubuntu-latest
@@ -11,4 +16,13 @@ jobs:
           python-version: '3.9'
           cache: 'pip' # caching pip dependencies
       - run: pip install -r requirements.txt
-      - run: pytest tests/test_my_functions.py
+      - name: Run Tests and Generate JUnit XML
+        run: pytest --junitxml=test-results/results.xml tests/test_my_functions.py
+      - name: Publish Test Results
+        if: always()
+        uses: EnricoMi/publish-unit-test-result-action@v2.16.1
+        with:
+          files: |
+            test-results/**/*.xml
+            test-results/**/*.trx
+            test-results/**/*.json
